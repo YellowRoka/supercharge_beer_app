@@ -19,22 +19,28 @@ mixin _$BeerSelectorEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() like,
+    required TResult Function(BeerModel beer) like,
     required TResult Function() unlike,
+    required TResult Function() limited,
+    required TResult Function(BeerModel? beer) refreshed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? like,
+    TResult? Function(BeerModel beer)? like,
     TResult? Function()? unlike,
+    TResult? Function()? limited,
+    TResult? Function(BeerModel? beer)? refreshed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? like,
+    TResult Function(BeerModel beer)? like,
     TResult Function()? unlike,
+    TResult Function()? limited,
+    TResult Function(BeerModel? beer)? refreshed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +49,8 @@ mixin _$BeerSelectorEvent {
     required TResult Function(BeerSelectorInitEvent value) initial,
     required TResult Function(BeerSelectorLikeEvent value) like,
     required TResult Function(BeerSelectorUnlikeEvent value) unlike,
+    required TResult Function(BeerSelectorLimitedEvent value) limited,
+    required TResult Function(BeerSelectorRefreshedEvent value) refreshed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +58,8 @@ mixin _$BeerSelectorEvent {
     TResult? Function(BeerSelectorInitEvent value)? initial,
     TResult? Function(BeerSelectorLikeEvent value)? like,
     TResult? Function(BeerSelectorUnlikeEvent value)? unlike,
+    TResult? Function(BeerSelectorLimitedEvent value)? limited,
+    TResult? Function(BeerSelectorRefreshedEvent value)? refreshed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +67,8 @@ mixin _$BeerSelectorEvent {
     TResult Function(BeerSelectorInitEvent value)? initial,
     TResult Function(BeerSelectorLikeEvent value)? like,
     TResult Function(BeerSelectorUnlikeEvent value)? unlike,
+    TResult Function(BeerSelectorLimitedEvent value)? limited,
+    TResult Function(BeerSelectorRefreshedEvent value)? refreshed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -121,8 +133,10 @@ class _$BeerSelectorInitEventImpl implements BeerSelectorInitEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() like,
+    required TResult Function(BeerModel beer) like,
     required TResult Function() unlike,
+    required TResult Function() limited,
+    required TResult Function(BeerModel? beer) refreshed,
   }) {
     return initial();
   }
@@ -131,8 +145,10 @@ class _$BeerSelectorInitEventImpl implements BeerSelectorInitEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? like,
+    TResult? Function(BeerModel beer)? like,
     TResult? Function()? unlike,
+    TResult? Function()? limited,
+    TResult? Function(BeerModel? beer)? refreshed,
   }) {
     return initial?.call();
   }
@@ -141,8 +157,10 @@ class _$BeerSelectorInitEventImpl implements BeerSelectorInitEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? like,
+    TResult Function(BeerModel beer)? like,
     TResult Function()? unlike,
+    TResult Function()? limited,
+    TResult Function(BeerModel? beer)? refreshed,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -157,6 +175,8 @@ class _$BeerSelectorInitEventImpl implements BeerSelectorInitEvent {
     required TResult Function(BeerSelectorInitEvent value) initial,
     required TResult Function(BeerSelectorLikeEvent value) like,
     required TResult Function(BeerSelectorUnlikeEvent value) unlike,
+    required TResult Function(BeerSelectorLimitedEvent value) limited,
+    required TResult Function(BeerSelectorRefreshedEvent value) refreshed,
   }) {
     return initial(this);
   }
@@ -167,6 +187,8 @@ class _$BeerSelectorInitEventImpl implements BeerSelectorInitEvent {
     TResult? Function(BeerSelectorInitEvent value)? initial,
     TResult? Function(BeerSelectorLikeEvent value)? like,
     TResult? Function(BeerSelectorUnlikeEvent value)? unlike,
+    TResult? Function(BeerSelectorLimitedEvent value)? limited,
+    TResult? Function(BeerSelectorRefreshedEvent value)? refreshed,
   }) {
     return initial?.call(this);
   }
@@ -177,6 +199,8 @@ class _$BeerSelectorInitEventImpl implements BeerSelectorInitEvent {
     TResult Function(BeerSelectorInitEvent value)? initial,
     TResult Function(BeerSelectorLikeEvent value)? like,
     TResult Function(BeerSelectorUnlikeEvent value)? unlike,
+    TResult Function(BeerSelectorLimitedEvent value)? limited,
+    TResult Function(BeerSelectorRefreshedEvent value)? refreshed,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -196,6 +220,8 @@ abstract class _$$BeerSelectorLikeEventImplCopyWith<$Res> {
           _$BeerSelectorLikeEventImpl value,
           $Res Function(_$BeerSelectorLikeEventImpl) then) =
       __$$BeerSelectorLikeEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({BeerModel beer});
 }
 
 /// @nodoc
@@ -205,58 +231,88 @@ class __$$BeerSelectorLikeEventImplCopyWithImpl<$Res>
   __$$BeerSelectorLikeEventImplCopyWithImpl(_$BeerSelectorLikeEventImpl _value,
       $Res Function(_$BeerSelectorLikeEventImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? beer = null,
+  }) {
+    return _then(_$BeerSelectorLikeEventImpl(
+      null == beer
+          ? _value.beer
+          : beer // ignore: cast_nullable_to_non_nullable
+              as BeerModel,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$BeerSelectorLikeEventImpl implements BeerSelectorLikeEvent {
-  const _$BeerSelectorLikeEventImpl();
+  const _$BeerSelectorLikeEventImpl(this.beer);
+
+  @override
+  final BeerModel beer;
 
   @override
   String toString() {
-    return 'BeerSelectorEvent.like()';
+    return 'BeerSelectorEvent.like(beer: $beer)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$BeerSelectorLikeEventImpl);
+            other is _$BeerSelectorLikeEventImpl &&
+            (identical(other.beer, beer) || other.beer == beer));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, beer);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$BeerSelectorLikeEventImplCopyWith<_$BeerSelectorLikeEventImpl>
+      get copyWith => __$$BeerSelectorLikeEventImplCopyWithImpl<
+          _$BeerSelectorLikeEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() like,
+    required TResult Function(BeerModel beer) like,
     required TResult Function() unlike,
+    required TResult Function() limited,
+    required TResult Function(BeerModel? beer) refreshed,
   }) {
-    return like();
+    return like(beer);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? like,
+    TResult? Function(BeerModel beer)? like,
     TResult? Function()? unlike,
+    TResult? Function()? limited,
+    TResult? Function(BeerModel? beer)? refreshed,
   }) {
-    return like?.call();
+    return like?.call(beer);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? like,
+    TResult Function(BeerModel beer)? like,
     TResult Function()? unlike,
+    TResult Function()? limited,
+    TResult Function(BeerModel? beer)? refreshed,
     required TResult orElse(),
   }) {
     if (like != null) {
-      return like();
+      return like(beer);
     }
     return orElse();
   }
@@ -267,6 +323,8 @@ class _$BeerSelectorLikeEventImpl implements BeerSelectorLikeEvent {
     required TResult Function(BeerSelectorInitEvent value) initial,
     required TResult Function(BeerSelectorLikeEvent value) like,
     required TResult Function(BeerSelectorUnlikeEvent value) unlike,
+    required TResult Function(BeerSelectorLimitedEvent value) limited,
+    required TResult Function(BeerSelectorRefreshedEvent value) refreshed,
   }) {
     return like(this);
   }
@@ -277,6 +335,8 @@ class _$BeerSelectorLikeEventImpl implements BeerSelectorLikeEvent {
     TResult? Function(BeerSelectorInitEvent value)? initial,
     TResult? Function(BeerSelectorLikeEvent value)? like,
     TResult? Function(BeerSelectorUnlikeEvent value)? unlike,
+    TResult? Function(BeerSelectorLimitedEvent value)? limited,
+    TResult? Function(BeerSelectorRefreshedEvent value)? refreshed,
   }) {
     return like?.call(this);
   }
@@ -287,6 +347,8 @@ class _$BeerSelectorLikeEventImpl implements BeerSelectorLikeEvent {
     TResult Function(BeerSelectorInitEvent value)? initial,
     TResult Function(BeerSelectorLikeEvent value)? like,
     TResult Function(BeerSelectorUnlikeEvent value)? unlike,
+    TResult Function(BeerSelectorLimitedEvent value)? limited,
+    TResult Function(BeerSelectorRefreshedEvent value)? refreshed,
     required TResult orElse(),
   }) {
     if (like != null) {
@@ -297,7 +359,13 @@ class _$BeerSelectorLikeEventImpl implements BeerSelectorLikeEvent {
 }
 
 abstract class BeerSelectorLikeEvent implements BeerSelectorEvent {
-  const factory BeerSelectorLikeEvent() = _$BeerSelectorLikeEventImpl;
+  const factory BeerSelectorLikeEvent(final BeerModel beer) =
+      _$BeerSelectorLikeEventImpl;
+
+  BeerModel get beer;
+  @JsonKey(ignore: true)
+  _$$BeerSelectorLikeEventImplCopyWith<_$BeerSelectorLikeEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -342,8 +410,10 @@ class _$BeerSelectorUnlikeEventImpl implements BeerSelectorUnlikeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() like,
+    required TResult Function(BeerModel beer) like,
     required TResult Function() unlike,
+    required TResult Function() limited,
+    required TResult Function(BeerModel? beer) refreshed,
   }) {
     return unlike();
   }
@@ -352,8 +422,10 @@ class _$BeerSelectorUnlikeEventImpl implements BeerSelectorUnlikeEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? like,
+    TResult? Function(BeerModel beer)? like,
     TResult? Function()? unlike,
+    TResult? Function()? limited,
+    TResult? Function(BeerModel? beer)? refreshed,
   }) {
     return unlike?.call();
   }
@@ -362,8 +434,10 @@ class _$BeerSelectorUnlikeEventImpl implements BeerSelectorUnlikeEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? like,
+    TResult Function(BeerModel beer)? like,
     TResult Function()? unlike,
+    TResult Function()? limited,
+    TResult Function(BeerModel? beer)? refreshed,
     required TResult orElse(),
   }) {
     if (unlike != null) {
@@ -378,6 +452,8 @@ class _$BeerSelectorUnlikeEventImpl implements BeerSelectorUnlikeEvent {
     required TResult Function(BeerSelectorInitEvent value) initial,
     required TResult Function(BeerSelectorLikeEvent value) like,
     required TResult Function(BeerSelectorUnlikeEvent value) unlike,
+    required TResult Function(BeerSelectorLimitedEvent value) limited,
+    required TResult Function(BeerSelectorRefreshedEvent value) refreshed,
   }) {
     return unlike(this);
   }
@@ -388,6 +464,8 @@ class _$BeerSelectorUnlikeEventImpl implements BeerSelectorUnlikeEvent {
     TResult? Function(BeerSelectorInitEvent value)? initial,
     TResult? Function(BeerSelectorLikeEvent value)? like,
     TResult? Function(BeerSelectorUnlikeEvent value)? unlike,
+    TResult? Function(BeerSelectorLimitedEvent value)? limited,
+    TResult? Function(BeerSelectorRefreshedEvent value)? refreshed,
   }) {
     return unlike?.call(this);
   }
@@ -398,6 +476,8 @@ class _$BeerSelectorUnlikeEventImpl implements BeerSelectorUnlikeEvent {
     TResult Function(BeerSelectorInitEvent value)? initial,
     TResult Function(BeerSelectorLikeEvent value)? like,
     TResult Function(BeerSelectorUnlikeEvent value)? unlike,
+    TResult Function(BeerSelectorLimitedEvent value)? limited,
+    TResult Function(BeerSelectorRefreshedEvent value)? refreshed,
     required TResult orElse(),
   }) {
     if (unlike != null) {
@@ -412,12 +492,294 @@ abstract class BeerSelectorUnlikeEvent implements BeerSelectorEvent {
 }
 
 /// @nodoc
+abstract class _$$BeerSelectorLimitedEventImplCopyWith<$Res> {
+  factory _$$BeerSelectorLimitedEventImplCopyWith(
+          _$BeerSelectorLimitedEventImpl value,
+          $Res Function(_$BeerSelectorLimitedEventImpl) then) =
+      __$$BeerSelectorLimitedEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$BeerSelectorLimitedEventImplCopyWithImpl<$Res>
+    extends _$BeerSelectorEventCopyWithImpl<$Res,
+        _$BeerSelectorLimitedEventImpl>
+    implements _$$BeerSelectorLimitedEventImplCopyWith<$Res> {
+  __$$BeerSelectorLimitedEventImplCopyWithImpl(
+      _$BeerSelectorLimitedEventImpl _value,
+      $Res Function(_$BeerSelectorLimitedEventImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$BeerSelectorLimitedEventImpl implements BeerSelectorLimitedEvent {
+  const _$BeerSelectorLimitedEventImpl();
+
+  @override
+  String toString() {
+    return 'BeerSelectorEvent.limited()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$BeerSelectorLimitedEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(BeerModel beer) like,
+    required TResult Function() unlike,
+    required TResult Function() limited,
+    required TResult Function(BeerModel? beer) refreshed,
+  }) {
+    return limited();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(BeerModel beer)? like,
+    TResult? Function()? unlike,
+    TResult? Function()? limited,
+    TResult? Function(BeerModel? beer)? refreshed,
+  }) {
+    return limited?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(BeerModel beer)? like,
+    TResult Function()? unlike,
+    TResult Function()? limited,
+    TResult Function(BeerModel? beer)? refreshed,
+    required TResult orElse(),
+  }) {
+    if (limited != null) {
+      return limited();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(BeerSelectorInitEvent value) initial,
+    required TResult Function(BeerSelectorLikeEvent value) like,
+    required TResult Function(BeerSelectorUnlikeEvent value) unlike,
+    required TResult Function(BeerSelectorLimitedEvent value) limited,
+    required TResult Function(BeerSelectorRefreshedEvent value) refreshed,
+  }) {
+    return limited(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(BeerSelectorInitEvent value)? initial,
+    TResult? Function(BeerSelectorLikeEvent value)? like,
+    TResult? Function(BeerSelectorUnlikeEvent value)? unlike,
+    TResult? Function(BeerSelectorLimitedEvent value)? limited,
+    TResult? Function(BeerSelectorRefreshedEvent value)? refreshed,
+  }) {
+    return limited?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(BeerSelectorInitEvent value)? initial,
+    TResult Function(BeerSelectorLikeEvent value)? like,
+    TResult Function(BeerSelectorUnlikeEvent value)? unlike,
+    TResult Function(BeerSelectorLimitedEvent value)? limited,
+    TResult Function(BeerSelectorRefreshedEvent value)? refreshed,
+    required TResult orElse(),
+  }) {
+    if (limited != null) {
+      return limited(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class BeerSelectorLimitedEvent implements BeerSelectorEvent {
+  const factory BeerSelectorLimitedEvent() = _$BeerSelectorLimitedEventImpl;
+}
+
+/// @nodoc
+abstract class _$$BeerSelectorRefreshedEventImplCopyWith<$Res> {
+  factory _$$BeerSelectorRefreshedEventImplCopyWith(
+          _$BeerSelectorRefreshedEventImpl value,
+          $Res Function(_$BeerSelectorRefreshedEventImpl) then) =
+      __$$BeerSelectorRefreshedEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({BeerModel? beer});
+}
+
+/// @nodoc
+class __$$BeerSelectorRefreshedEventImplCopyWithImpl<$Res>
+    extends _$BeerSelectorEventCopyWithImpl<$Res,
+        _$BeerSelectorRefreshedEventImpl>
+    implements _$$BeerSelectorRefreshedEventImplCopyWith<$Res> {
+  __$$BeerSelectorRefreshedEventImplCopyWithImpl(
+      _$BeerSelectorRefreshedEventImpl _value,
+      $Res Function(_$BeerSelectorRefreshedEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? beer = freezed,
+  }) {
+    return _then(_$BeerSelectorRefreshedEventImpl(
+      freezed == beer
+          ? _value.beer
+          : beer // ignore: cast_nullable_to_non_nullable
+              as BeerModel?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$BeerSelectorRefreshedEventImpl implements BeerSelectorRefreshedEvent {
+  const _$BeerSelectorRefreshedEventImpl(this.beer);
+
+  @override
+  final BeerModel? beer;
+
+  @override
+  String toString() {
+    return 'BeerSelectorEvent.refreshed(beer: $beer)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$BeerSelectorRefreshedEventImpl &&
+            (identical(other.beer, beer) || other.beer == beer));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, beer);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$BeerSelectorRefreshedEventImplCopyWith<_$BeerSelectorRefreshedEventImpl>
+      get copyWith => __$$BeerSelectorRefreshedEventImplCopyWithImpl<
+          _$BeerSelectorRefreshedEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(BeerModel beer) like,
+    required TResult Function() unlike,
+    required TResult Function() limited,
+    required TResult Function(BeerModel? beer) refreshed,
+  }) {
+    return refreshed(beer);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(BeerModel beer)? like,
+    TResult? Function()? unlike,
+    TResult? Function()? limited,
+    TResult? Function(BeerModel? beer)? refreshed,
+  }) {
+    return refreshed?.call(beer);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(BeerModel beer)? like,
+    TResult Function()? unlike,
+    TResult Function()? limited,
+    TResult Function(BeerModel? beer)? refreshed,
+    required TResult orElse(),
+  }) {
+    if (refreshed != null) {
+      return refreshed(beer);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(BeerSelectorInitEvent value) initial,
+    required TResult Function(BeerSelectorLikeEvent value) like,
+    required TResult Function(BeerSelectorUnlikeEvent value) unlike,
+    required TResult Function(BeerSelectorLimitedEvent value) limited,
+    required TResult Function(BeerSelectorRefreshedEvent value) refreshed,
+  }) {
+    return refreshed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(BeerSelectorInitEvent value)? initial,
+    TResult? Function(BeerSelectorLikeEvent value)? like,
+    TResult? Function(BeerSelectorUnlikeEvent value)? unlike,
+    TResult? Function(BeerSelectorLimitedEvent value)? limited,
+    TResult? Function(BeerSelectorRefreshedEvent value)? refreshed,
+  }) {
+    return refreshed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(BeerSelectorInitEvent value)? initial,
+    TResult Function(BeerSelectorLikeEvent value)? like,
+    TResult Function(BeerSelectorUnlikeEvent value)? unlike,
+    TResult Function(BeerSelectorLimitedEvent value)? limited,
+    TResult Function(BeerSelectorRefreshedEvent value)? refreshed,
+    required TResult orElse(),
+  }) {
+    if (refreshed != null) {
+      return refreshed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class BeerSelectorRefreshedEvent implements BeerSelectorEvent {
+  const factory BeerSelectorRefreshedEvent(final BeerModel? beer) =
+      _$BeerSelectorRefreshedEventImpl;
+
+  BeerModel? get beer;
+  @JsonKey(ignore: true)
+  _$$BeerSelectorRefreshedEventImplCopyWith<_$BeerSelectorRefreshedEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$BeerSelectorState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() liked,
     required TResult Function() unliked,
+    required TResult Function() limited,
+    required TResult Function(BeerModel? beer) refreshed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -425,6 +787,8 @@ mixin _$BeerSelectorState {
     TResult? Function()? init,
     TResult? Function()? liked,
     TResult? Function()? unliked,
+    TResult? Function()? limited,
+    TResult? Function(BeerModel? beer)? refreshed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -432,6 +796,8 @@ mixin _$BeerSelectorState {
     TResult Function()? init,
     TResult Function()? liked,
     TResult Function()? unliked,
+    TResult Function()? limited,
+    TResult Function(BeerModel? beer)? refreshed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -440,6 +806,8 @@ mixin _$BeerSelectorState {
     required TResult Function(BeerSelectorInitState value) init,
     required TResult Function(BeerSelectorLikedState value) liked,
     required TResult Function(BeerSelectorUnlikedState value) unliked,
+    required TResult Function(BeerSelectorLimitedState value) limited,
+    required TResult Function(BeerSelectorRefreshedState value) refreshed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -447,6 +815,8 @@ mixin _$BeerSelectorState {
     TResult? Function(BeerSelectorInitState value)? init,
     TResult? Function(BeerSelectorLikedState value)? liked,
     TResult? Function(BeerSelectorUnlikedState value)? unliked,
+    TResult? Function(BeerSelectorLimitedState value)? limited,
+    TResult? Function(BeerSelectorRefreshedState value)? refreshed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -454,6 +824,8 @@ mixin _$BeerSelectorState {
     TResult Function(BeerSelectorInitState value)? init,
     TResult Function(BeerSelectorLikedState value)? liked,
     TResult Function(BeerSelectorUnlikedState value)? unliked,
+    TResult Function(BeerSelectorLimitedState value)? limited,
+    TResult Function(BeerSelectorRefreshedState value)? refreshed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -520,6 +892,8 @@ class _$BeerSelectorInitStateImpl implements BeerSelectorInitState {
     required TResult Function() init,
     required TResult Function() liked,
     required TResult Function() unliked,
+    required TResult Function() limited,
+    required TResult Function(BeerModel? beer) refreshed,
   }) {
     return init();
   }
@@ -530,6 +904,8 @@ class _$BeerSelectorInitStateImpl implements BeerSelectorInitState {
     TResult? Function()? init,
     TResult? Function()? liked,
     TResult? Function()? unliked,
+    TResult? Function()? limited,
+    TResult? Function(BeerModel? beer)? refreshed,
   }) {
     return init?.call();
   }
@@ -540,6 +916,8 @@ class _$BeerSelectorInitStateImpl implements BeerSelectorInitState {
     TResult Function()? init,
     TResult Function()? liked,
     TResult Function()? unliked,
+    TResult Function()? limited,
+    TResult Function(BeerModel? beer)? refreshed,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -554,6 +932,8 @@ class _$BeerSelectorInitStateImpl implements BeerSelectorInitState {
     required TResult Function(BeerSelectorInitState value) init,
     required TResult Function(BeerSelectorLikedState value) liked,
     required TResult Function(BeerSelectorUnlikedState value) unliked,
+    required TResult Function(BeerSelectorLimitedState value) limited,
+    required TResult Function(BeerSelectorRefreshedState value) refreshed,
   }) {
     return init(this);
   }
@@ -564,6 +944,8 @@ class _$BeerSelectorInitStateImpl implements BeerSelectorInitState {
     TResult? Function(BeerSelectorInitState value)? init,
     TResult? Function(BeerSelectorLikedState value)? liked,
     TResult? Function(BeerSelectorUnlikedState value)? unliked,
+    TResult? Function(BeerSelectorLimitedState value)? limited,
+    TResult? Function(BeerSelectorRefreshedState value)? refreshed,
   }) {
     return init?.call(this);
   }
@@ -574,6 +956,8 @@ class _$BeerSelectorInitStateImpl implements BeerSelectorInitState {
     TResult Function(BeerSelectorInitState value)? init,
     TResult Function(BeerSelectorLikedState value)? liked,
     TResult Function(BeerSelectorUnlikedState value)? unliked,
+    TResult Function(BeerSelectorLimitedState value)? limited,
+    TResult Function(BeerSelectorRefreshedState value)? refreshed,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -631,6 +1015,8 @@ class _$BeerSelectorLikedStateImpl implements BeerSelectorLikedState {
     required TResult Function() init,
     required TResult Function() liked,
     required TResult Function() unliked,
+    required TResult Function() limited,
+    required TResult Function(BeerModel? beer) refreshed,
   }) {
     return liked();
   }
@@ -641,6 +1027,8 @@ class _$BeerSelectorLikedStateImpl implements BeerSelectorLikedState {
     TResult? Function()? init,
     TResult? Function()? liked,
     TResult? Function()? unliked,
+    TResult? Function()? limited,
+    TResult? Function(BeerModel? beer)? refreshed,
   }) {
     return liked?.call();
   }
@@ -651,6 +1039,8 @@ class _$BeerSelectorLikedStateImpl implements BeerSelectorLikedState {
     TResult Function()? init,
     TResult Function()? liked,
     TResult Function()? unliked,
+    TResult Function()? limited,
+    TResult Function(BeerModel? beer)? refreshed,
     required TResult orElse(),
   }) {
     if (liked != null) {
@@ -665,6 +1055,8 @@ class _$BeerSelectorLikedStateImpl implements BeerSelectorLikedState {
     required TResult Function(BeerSelectorInitState value) init,
     required TResult Function(BeerSelectorLikedState value) liked,
     required TResult Function(BeerSelectorUnlikedState value) unliked,
+    required TResult Function(BeerSelectorLimitedState value) limited,
+    required TResult Function(BeerSelectorRefreshedState value) refreshed,
   }) {
     return liked(this);
   }
@@ -675,6 +1067,8 @@ class _$BeerSelectorLikedStateImpl implements BeerSelectorLikedState {
     TResult? Function(BeerSelectorInitState value)? init,
     TResult? Function(BeerSelectorLikedState value)? liked,
     TResult? Function(BeerSelectorUnlikedState value)? unliked,
+    TResult? Function(BeerSelectorLimitedState value)? limited,
+    TResult? Function(BeerSelectorRefreshedState value)? refreshed,
   }) {
     return liked?.call(this);
   }
@@ -685,6 +1079,8 @@ class _$BeerSelectorLikedStateImpl implements BeerSelectorLikedState {
     TResult Function(BeerSelectorInitState value)? init,
     TResult Function(BeerSelectorLikedState value)? liked,
     TResult Function(BeerSelectorUnlikedState value)? unliked,
+    TResult Function(BeerSelectorLimitedState value)? limited,
+    TResult Function(BeerSelectorRefreshedState value)? refreshed,
     required TResult orElse(),
   }) {
     if (liked != null) {
@@ -743,6 +1139,8 @@ class _$BeerSelectorUnlikedStateImpl implements BeerSelectorUnlikedState {
     required TResult Function() init,
     required TResult Function() liked,
     required TResult Function() unliked,
+    required TResult Function() limited,
+    required TResult Function(BeerModel? beer) refreshed,
   }) {
     return unliked();
   }
@@ -753,6 +1151,8 @@ class _$BeerSelectorUnlikedStateImpl implements BeerSelectorUnlikedState {
     TResult? Function()? init,
     TResult? Function()? liked,
     TResult? Function()? unliked,
+    TResult? Function()? limited,
+    TResult? Function(BeerModel? beer)? refreshed,
   }) {
     return unliked?.call();
   }
@@ -763,6 +1163,8 @@ class _$BeerSelectorUnlikedStateImpl implements BeerSelectorUnlikedState {
     TResult Function()? init,
     TResult Function()? liked,
     TResult Function()? unliked,
+    TResult Function()? limited,
+    TResult Function(BeerModel? beer)? refreshed,
     required TResult orElse(),
   }) {
     if (unliked != null) {
@@ -777,6 +1179,8 @@ class _$BeerSelectorUnlikedStateImpl implements BeerSelectorUnlikedState {
     required TResult Function(BeerSelectorInitState value) init,
     required TResult Function(BeerSelectorLikedState value) liked,
     required TResult Function(BeerSelectorUnlikedState value) unliked,
+    required TResult Function(BeerSelectorLimitedState value) limited,
+    required TResult Function(BeerSelectorRefreshedState value) refreshed,
   }) {
     return unliked(this);
   }
@@ -787,6 +1191,8 @@ class _$BeerSelectorUnlikedStateImpl implements BeerSelectorUnlikedState {
     TResult? Function(BeerSelectorInitState value)? init,
     TResult? Function(BeerSelectorLikedState value)? liked,
     TResult? Function(BeerSelectorUnlikedState value)? unliked,
+    TResult? Function(BeerSelectorLimitedState value)? limited,
+    TResult? Function(BeerSelectorRefreshedState value)? refreshed,
   }) {
     return unliked?.call(this);
   }
@@ -797,6 +1203,8 @@ class _$BeerSelectorUnlikedStateImpl implements BeerSelectorUnlikedState {
     TResult Function(BeerSelectorInitState value)? init,
     TResult Function(BeerSelectorLikedState value)? liked,
     TResult Function(BeerSelectorUnlikedState value)? unliked,
+    TResult Function(BeerSelectorLimitedState value)? limited,
+    TResult Function(BeerSelectorRefreshedState value)? refreshed,
     required TResult orElse(),
   }) {
     if (unliked != null) {
@@ -808,4 +1216,284 @@ class _$BeerSelectorUnlikedStateImpl implements BeerSelectorUnlikedState {
 
 abstract class BeerSelectorUnlikedState implements BeerSelectorState {
   const factory BeerSelectorUnlikedState() = _$BeerSelectorUnlikedStateImpl;
+}
+
+/// @nodoc
+abstract class _$$BeerSelectorLimitedStateImplCopyWith<$Res> {
+  factory _$$BeerSelectorLimitedStateImplCopyWith(
+          _$BeerSelectorLimitedStateImpl value,
+          $Res Function(_$BeerSelectorLimitedStateImpl) then) =
+      __$$BeerSelectorLimitedStateImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$BeerSelectorLimitedStateImplCopyWithImpl<$Res>
+    extends _$BeerSelectorStateCopyWithImpl<$Res,
+        _$BeerSelectorLimitedStateImpl>
+    implements _$$BeerSelectorLimitedStateImplCopyWith<$Res> {
+  __$$BeerSelectorLimitedStateImplCopyWithImpl(
+      _$BeerSelectorLimitedStateImpl _value,
+      $Res Function(_$BeerSelectorLimitedStateImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$BeerSelectorLimitedStateImpl implements BeerSelectorLimitedState {
+  const _$BeerSelectorLimitedStateImpl();
+
+  @override
+  String toString() {
+    return 'BeerSelectorState.limited()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$BeerSelectorLimitedStateImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() liked,
+    required TResult Function() unliked,
+    required TResult Function() limited,
+    required TResult Function(BeerModel? beer) refreshed,
+  }) {
+    return limited();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? liked,
+    TResult? Function()? unliked,
+    TResult? Function()? limited,
+    TResult? Function(BeerModel? beer)? refreshed,
+  }) {
+    return limited?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? liked,
+    TResult Function()? unliked,
+    TResult Function()? limited,
+    TResult Function(BeerModel? beer)? refreshed,
+    required TResult orElse(),
+  }) {
+    if (limited != null) {
+      return limited();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(BeerSelectorInitState value) init,
+    required TResult Function(BeerSelectorLikedState value) liked,
+    required TResult Function(BeerSelectorUnlikedState value) unliked,
+    required TResult Function(BeerSelectorLimitedState value) limited,
+    required TResult Function(BeerSelectorRefreshedState value) refreshed,
+  }) {
+    return limited(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(BeerSelectorInitState value)? init,
+    TResult? Function(BeerSelectorLikedState value)? liked,
+    TResult? Function(BeerSelectorUnlikedState value)? unliked,
+    TResult? Function(BeerSelectorLimitedState value)? limited,
+    TResult? Function(BeerSelectorRefreshedState value)? refreshed,
+  }) {
+    return limited?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(BeerSelectorInitState value)? init,
+    TResult Function(BeerSelectorLikedState value)? liked,
+    TResult Function(BeerSelectorUnlikedState value)? unliked,
+    TResult Function(BeerSelectorLimitedState value)? limited,
+    TResult Function(BeerSelectorRefreshedState value)? refreshed,
+    required TResult orElse(),
+  }) {
+    if (limited != null) {
+      return limited(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class BeerSelectorLimitedState implements BeerSelectorState {
+  const factory BeerSelectorLimitedState() = _$BeerSelectorLimitedStateImpl;
+}
+
+/// @nodoc
+abstract class _$$BeerSelectorRefreshedStateImplCopyWith<$Res> {
+  factory _$$BeerSelectorRefreshedStateImplCopyWith(
+          _$BeerSelectorRefreshedStateImpl value,
+          $Res Function(_$BeerSelectorRefreshedStateImpl) then) =
+      __$$BeerSelectorRefreshedStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({BeerModel? beer});
+}
+
+/// @nodoc
+class __$$BeerSelectorRefreshedStateImplCopyWithImpl<$Res>
+    extends _$BeerSelectorStateCopyWithImpl<$Res,
+        _$BeerSelectorRefreshedStateImpl>
+    implements _$$BeerSelectorRefreshedStateImplCopyWith<$Res> {
+  __$$BeerSelectorRefreshedStateImplCopyWithImpl(
+      _$BeerSelectorRefreshedStateImpl _value,
+      $Res Function(_$BeerSelectorRefreshedStateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? beer = freezed,
+  }) {
+    return _then(_$BeerSelectorRefreshedStateImpl(
+      beer: freezed == beer
+          ? _value.beer
+          : beer // ignore: cast_nullable_to_non_nullable
+              as BeerModel?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$BeerSelectorRefreshedStateImpl implements BeerSelectorRefreshedState {
+  const _$BeerSelectorRefreshedStateImpl({required this.beer});
+
+  @override
+  final BeerModel? beer;
+
+  @override
+  String toString() {
+    return 'BeerSelectorState.refreshed(beer: $beer)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$BeerSelectorRefreshedStateImpl &&
+            (identical(other.beer, beer) || other.beer == beer));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, beer);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$BeerSelectorRefreshedStateImplCopyWith<_$BeerSelectorRefreshedStateImpl>
+      get copyWith => __$$BeerSelectorRefreshedStateImplCopyWithImpl<
+          _$BeerSelectorRefreshedStateImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() liked,
+    required TResult Function() unliked,
+    required TResult Function() limited,
+    required TResult Function(BeerModel? beer) refreshed,
+  }) {
+    return refreshed(beer);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? liked,
+    TResult? Function()? unliked,
+    TResult? Function()? limited,
+    TResult? Function(BeerModel? beer)? refreshed,
+  }) {
+    return refreshed?.call(beer);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? liked,
+    TResult Function()? unliked,
+    TResult Function()? limited,
+    TResult Function(BeerModel? beer)? refreshed,
+    required TResult orElse(),
+  }) {
+    if (refreshed != null) {
+      return refreshed(beer);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(BeerSelectorInitState value) init,
+    required TResult Function(BeerSelectorLikedState value) liked,
+    required TResult Function(BeerSelectorUnlikedState value) unliked,
+    required TResult Function(BeerSelectorLimitedState value) limited,
+    required TResult Function(BeerSelectorRefreshedState value) refreshed,
+  }) {
+    return refreshed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(BeerSelectorInitState value)? init,
+    TResult? Function(BeerSelectorLikedState value)? liked,
+    TResult? Function(BeerSelectorUnlikedState value)? unliked,
+    TResult? Function(BeerSelectorLimitedState value)? limited,
+    TResult? Function(BeerSelectorRefreshedState value)? refreshed,
+  }) {
+    return refreshed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(BeerSelectorInitState value)? init,
+    TResult Function(BeerSelectorLikedState value)? liked,
+    TResult Function(BeerSelectorUnlikedState value)? unliked,
+    TResult Function(BeerSelectorLimitedState value)? limited,
+    TResult Function(BeerSelectorRefreshedState value)? refreshed,
+    required TResult orElse(),
+  }) {
+    if (refreshed != null) {
+      return refreshed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class BeerSelectorRefreshedState implements BeerSelectorState {
+  const factory BeerSelectorRefreshedState({required final BeerModel? beer}) =
+      _$BeerSelectorRefreshedStateImpl;
+
+  BeerModel? get beer;
+  @JsonKey(ignore: true)
+  _$$BeerSelectorRefreshedStateImplCopyWith<_$BeerSelectorRefreshedStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

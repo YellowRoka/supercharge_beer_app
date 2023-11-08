@@ -7,6 +7,6 @@ import 'package:supercharge_beer_app/system/router/app_router_interface.dart';
 
 final AppRouterInterface appRouterProvider = getIt<AppRouterInterface>();
 
-final PunkApiRepository       punkApiRepository       = getIt<PunkApiRepository>();
-final SelectedBeersRepository selectedBeersRepository = getIt<SelectedBeersRepository>();
+final PunkApiRepository       punkApiRepositoryProvider       = getIt<PunkApiRepository>();
+final SelectedBeersRepository selectedBeersRepositoryProvider = getIt<SelectedBeersRepository>();
 

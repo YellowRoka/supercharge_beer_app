@@ -8,9 +8,15 @@ class PunkApiDto{
   final int?          id;
   final String?       name;
   final String?       tagline;
+
+  @JsonKey(name: "first_brewed")
   final String?       firstBrewed;
+
   final String?       description;
+
+  @JsonKey(name: "image_url")
   final String?       imageUrl;
+
   final double?       abv;
   final int?          ibu;
   final int?          targetFg;
@@ -18,14 +24,27 @@ class PunkApiDto{
   final int?          ebc;
   final int?          srm;
   final double?       ph;
+
+  @JsonKey(name: "attenuation_level")
   final int?          attenuationLevel;
+
   final Volume?       volume;
+
+  @JsonKey(name: "boil_volume")
   final Volume?       boilVolume;
+
   final Method?       method;
   final Ingredients?  ingredients;
+  
+  @JsonKey(name: "food_pairing")
   final List<String>? foodPairing;
+
+  @JsonKey(name: "brewers_tips")
   final String?       brewersTips;
+
+  @JsonKey(name: "contributed_by")
   final String?       contributedBy;
+
 
   const PunkApiDto(this.id, this.name, this.tagline, this.firstBrewed, this.description, this.imageUrl, this.abv, this.ibu, this.targetFg, this.targetOg, this.ebc, this.srm, this.ph, this.attenuationLevel, this.volume, this.boilVolume, this.method, this.ingredients, this.foodPairing, this.brewersTips, this.contributedBy);
   dynamic toJson() => _$PunkApiDtoToJson(this);
