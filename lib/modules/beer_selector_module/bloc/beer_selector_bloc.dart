@@ -3,6 +3,7 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:supercharge_beer_app/di/providers/providers.dart';
 import 'package:supercharge_beer_app/repositories/punk_repository/model/beer_model.dart';
+import 'package:supercharge_beer_app/system/router/app_router.dart';
 
 part 'beer_selector_event.dart';
 part 'beer_selector_state.dart';
@@ -18,13 +19,11 @@ class BeerSelectorBloc extends Bloc<BeerSelectorEvent, BeerSelectorState> {
     beerStreamSubsription = punkApiRepositoryProvider.getActualBeer.listen(
       (beer) {
         add(BeerSelectorEvent.refreshed(beer));
-        beerCounter++;
         if(beerCounter>10){
           add( const BeerSelectorEvent.limited());
         }
       }
     );
-    //punkApiRepositoryProvider.getABeer(id: beerCounter);
 
     on<BeerSelectorInitEvent>(initHandler);
     on<BeerSelectorLikeEvent>(likeHandler);
@@ -39,12 +38,14 @@ class BeerSelectorBloc extends Bloc<BeerSelectorEvent, BeerSelectorState> {
   }
 
   FutureOr<void> likeHandler( BeerSelectorLikeEvent event, Emitter<BeerSelectorState> emit ) async {
+    beerCounter++;
     punkApiRepositoryProvider.getABeer(id: beerCounter);
     selectedBeersRepositoryProvider.addBeerToLikedOnes(event.beer);
     emit( const BeerSelectorState.liked());
   }
 
   FutureOr<void> unlikeHandler( BeerSelectorUnlikeEvent event, Emitter<BeerSelectorState> emit ) async {
+    beerCounter++;
     punkApiRepositoryProvider.getABeer(id: beerCounter);
     emit( const BeerSelectorState.unliked());
   }
@@ -53,6 +54,7 @@ class BeerSelectorBloc extends Bloc<BeerSelectorEvent, BeerSelectorState> {
     emit( BeerSelectorState.refreshed(beer: event.beer));
   }
   FutureOr<void> limitedHandler( BeerSelectorLimitedEvent event, Emitter<BeerSelectorState> emit ) async {
+    appRouterProvider.goToRoute(AppRouter.pageBeerListView);
     emit( const BeerSelectorState.limited() );
   }
 

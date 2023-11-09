@@ -14,13 +14,13 @@ PunkApiDto _$PunkApiDtoFromJson(Map<String, dynamic> json) => PunkApiDto(
       json['description'] as String?,
       json['image_url'] as String?,
       (json['abv'] as num?)?.toDouble(),
-      json['ibu'] as int?,
-      json['targetFg'] as int?,
-      json['targetOg'] as int?,
-      json['ebc'] as int?,
-      json['srm'] as int?,
+      (json['ibu'] as num?)?.toDouble(),
+      (json['targetFg'] as num?)?.toDouble(),
+      (json['targetOg'] as num?)?.toDouble(),
+      (json['ebc'] as num?)?.toDouble(),
+      (json['srm'] as num?)?.toDouble(),
       (json['ph'] as num?)?.toDouble(),
-      json['attenuation_level'] as int?,
+      (json['attenuation_level'] as num?)?.toDouble(),
       json['volume'] == null ? null : Volume.fromJson(json['volume']),
       json['boil_volume'] == null ? null : Volume.fromJson(json['boil_volume']),
       json['method'] == null ? null : Method.fromJson(json['method']),
@@ -60,7 +60,7 @@ Map<String, dynamic> _$PunkApiDtoToJson(PunkApiDto instance) =>
     };
 
 Volume _$VolumeFromJson(Map<String, dynamic> json) => Volume(
-      json['value'] as int?,
+      (json['value'] as num?)?.toDouble(),
       json['unit'] as String?,
     );
 
@@ -94,7 +94,7 @@ Map<String, dynamic> _$FermentationToJson(Fermentation instance) =>
 
 MashTemp _$MashTempFromJson(Map<String, dynamic> json) => MashTemp(
       json['temp'] == null ? null : Volume.fromJson(json['temp']),
-      json['duration'] as int?,
+      (json['duration'] as num?)?.toDouble(),
     );
 
 Map<String, dynamic> _$MashTempToJson(MashTemp instance) => <String, dynamic>{

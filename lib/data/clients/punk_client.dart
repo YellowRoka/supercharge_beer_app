@@ -34,7 +34,7 @@ class PunkClient{
   }
 
   Future<PunkApiDto> requestABeer({required int id}) async {
-    Response response = await dio.get( punkApiBaseUrl, queryParameters: {'id': id} );
+    Response response = await dio.get( '$punkApiBaseUrl/$id' );
 
     var jsonData = PunkApiDto.fromJson(response.data[0]);
     return jsonData;

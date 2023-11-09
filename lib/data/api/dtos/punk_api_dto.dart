@@ -18,15 +18,15 @@ class PunkApiDto{
   final String?       imageUrl;
 
   final double?       abv;
-  final int?          ibu;
-  final int?          targetFg;
-  final int?          targetOg;
-  final int?          ebc;
-  final int?          srm;
+  final double?       ibu;
+  final double?       targetFg;
+  final double?       targetOg;
+  final double?       ebc;
+  final double?       srm;
   final double?       ph;
 
   @JsonKey(name: "attenuation_level")
-  final int?          attenuationLevel;
+  final double?       attenuationLevel;
 
   final Volume?       volume;
 
@@ -53,7 +53,7 @@ class PunkApiDto{
 
 @JsonSerializable()
 class Volume{
-  final int?    value;
+  final double? value;
   final String? unit;
 
   const Volume(this.value, this.unit);
@@ -84,7 +84,7 @@ class Fermentation {
 @JsonSerializable()
 class MashTemp {
   final Volume? temp;
-  final int?    duration;
+  final double?  duration;
 
   const MashTemp(this.temp, this.duration);
   dynamic toJson() => _$MashTempToJson(this);

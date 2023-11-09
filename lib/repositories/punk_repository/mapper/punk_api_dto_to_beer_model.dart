@@ -3,5 +3,5 @@ import 'package:supercharge_beer_app/repositories/punk_repository/model/beer_mod
 
 extension PunkApiDtoToBeerModel on PunkApiDto{
 
-  BeerModel toBeerModel() => BeerModel(id: id!, name:name!, tagline:tagline!, imageUrl:imageUrl!);
+  BeerModel toBeerModel() => BeerModel(id: id!, name:name!, tagline:tagline!, imageUrl:imageUrl!, description:description!);
 }
