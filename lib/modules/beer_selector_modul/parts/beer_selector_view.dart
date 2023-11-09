@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:supercharge_beer_app/modules/beer_selector_module/bloc/beer_selector_bloc.dart';
-import 'package:supercharge_beer_app/modules/beer_selector_module/parts/loading.dart';
-import 'package:supercharge_beer_app/modules/beer_selector_module/parts/show_beer.dart';
+import 'package:supercharge_beer_app/modules/beer_selector_modul/bloc/beer_selector_bloc.dart';
+import 'package:supercharge_beer_app/modules/beer_selector_modul/parts/loading.dart';
+import 'package:supercharge_beer_app/modules/beer_selector_modul/parts/show_beer.dart';
 
 class BeerSelectorView extends StatelessWidget {
   const BeerSelectorView({super.key});

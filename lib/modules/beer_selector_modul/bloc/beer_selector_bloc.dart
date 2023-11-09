@@ -10,8 +10,10 @@ part 'beer_selector_state.dart';
 part 'beer_selector_bloc.freezed.dart';
 
 class BeerSelectorBloc extends Bloc<BeerSelectorEvent, BeerSelectorState> {
+  final int beerSelectorLimit = 10;
 
   int beerCounter = 1;
+  
   late StreamSubscription beerStreamSubsription;
 
   BeerSelectorBloc() : super( const BeerSelectorState.init()) {
@@ -19,7 +21,7 @@ class BeerSelectorBloc extends Bloc<BeerSelectorEvent, BeerSelectorState> {
     beerStreamSubsription = punkApiRepositoryProvider.getActualBeer.listen(
       (beer) {
         add(BeerSelectorEvent.refreshed(beer));
-        if(beerCounter>10){
+        if(beerCounter>beerSelectorLimit){
           add( const BeerSelectorEvent.limited());
         }
       }
@@ -54,7 +56,8 @@ class BeerSelectorBloc extends Bloc<BeerSelectorEvent, BeerSelectorState> {
     emit( BeerSelectorState.refreshed(beer: event.beer));
   }
   FutureOr<void> limitedHandler( BeerSelectorLimitedEvent event, Emitter<BeerSelectorState> emit ) async {
-    appRouterProvider.goToRoute(AppRouter.pageBeerListView);
+    appRouterProvider.goToRoute( AppRouter.pageLimitReachedView );
+    appRouterProvider.goToRoute( AppRouter.pageBeerListView );
     emit( const BeerSelectorState.limited() );
   }
 
