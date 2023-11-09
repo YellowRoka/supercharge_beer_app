@@ -5,12 +5,14 @@ import 'package:supercharge_beer_app/repositories/punk_repository/model/beer_mod
 import 'package:supercharge_beer_app/system/configs/color_constants.dart';
 
 class ShowBeerWidget extends StatelessWidget {
-  final BeerModel beer;
+  final BeerModel? beer;
 
   const ShowBeerWidget(this.beer, {super.key});
 
   @override
   Widget build(BuildContext context) {
+    if( beer == null) return const SizedBox();
+
     return Container(
       padding: const EdgeInsets.fromLTRB(10, 80, 10, 30),
       color: beerColorGreey,
@@ -18,16 +20,16 @@ class ShowBeerWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(beer.tagline),
+          Text(beer!.tagline),
           
           SizedBox(
             height: MediaQuery.of(context).size.height*0.5,
-            child:  Image.network(beer.imageUrl),
+            child:  Image.network(beer!.imageUrl),
             ),
           
           SizedBox(
             height: MediaQuery.of(context).size.height*0.15,
-            child:  Text(beer.description, overflow: TextOverflow.clip, maxLines: 5,textAlign:TextAlign.center ),
+            child:  Text(beer!.description, overflow: TextOverflow.clip, maxLines: 5,textAlign:TextAlign.center ),
           ),
     
           Row(
@@ -35,7 +37,7 @@ class ShowBeerWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               ElevatedButton.icon(
-                onPressed: () => context.read<BeerSelectorBloc>().add( BeerSelectorEvent.like(beer) ), 
+                onPressed: () => context.read<BeerSelectorBloc>().add( BeerSelectorEvent.like(beer!) ), 
                 style:     ElevatedButton.styleFrom( backgroundColor: beerColorBlue ),
                 icon:      const Icon( Icons.favorite, color: beerColorRed ), 
                 label:     const Text( 'Like' )

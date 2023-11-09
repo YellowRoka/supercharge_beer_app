@@ -53,6 +53,9 @@ class BeerSelectorBloc extends Bloc<BeerSelectorEvent, BeerSelectorState> {
   }
 
   FutureOr<void> refreshHandler( BeerSelectorRefreshedEvent event, Emitter<BeerSelectorState> emit ) async {
+    if(event.beer == null){
+      appRouterProvider.goToRoute( AppRouter.pageErrorView );
+    }
     emit( BeerSelectorState.refreshed(beer: event.beer));
   }
   FutureOr<void> limitedHandler( BeerSelectorLimitedEvent event, Emitter<BeerSelectorState> emit ) async {

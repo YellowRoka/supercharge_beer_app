@@ -16,8 +16,8 @@ class BeerSelectorView extends StatelessWidget {
           init:      ()     => child = const LoadingWidget(), 
           liked:     ()     => child = const LoadingWidget(), 
           unliked:   ()     => child = const LoadingWidget(),
-          refreshed: (beer) => child = ShowBeerWidget(beer!), 
           limited:   ()     => child = const LoadingWidget(),
+          refreshed: (beer) => child = ShowBeerWidget(beer), 
         );
 
         return child;

@@ -15,8 +15,8 @@ class PunkRepositoryImp implements PunkApiRepository{
 
   @override
   Future<void> getABeer({required int id}) async {
-    PunkApiDto beerDto = await punkApi.getSingleBeer(id);
-    streamController.add(beerDto.toBeerModel());
+    PunkApiDto? beerDto = await punkApi.getSingleBeer(id);
+    streamController.add(beerDto?.toBeerModel());
   }
   
   @override

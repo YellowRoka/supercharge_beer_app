@@ -4,8 +4,8 @@ import 'package:supercharge_beer_app/data/clients/punk_client.dart';
 class PunkApi{
   final PunkClient client = PunkClient();
 
-  Future<PunkApiDto> getSingleBeer(int id) async {
-    PunkApiDto beerDetailsDto = await client.requestABeer(id: id);
+  Future<PunkApiDto?> getSingleBeer(int id) async {
+    PunkApiDto? beerDetailsDto = await client.requestABeer(id: id);
     return beerDetailsDto;
   }
 }
