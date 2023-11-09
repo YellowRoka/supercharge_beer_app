@@ -6,22 +6,17 @@ import 'package:supercharge_beer_app/modules/selected_beers_list_modul/cubit/sel
 class ShowBeersList extends StatelessWidget {
   const ShowBeersList({super.key});
 
+  final Widget defaultChild = const Center( child: Text('No liked Beers! :(') );
+  
   @override
   Widget build(BuildContext context) {
-    Widget child = Container();
-
+    Widget child = defaultChild;
     return BlocBuilder<SelectedBeersListCubit, SelectedBeersListState>(
       builder: (context, state) {
         state.when(
-          initial:   ()      => child = Container(),
+          initial:   ()      => child = defaultChild,
           goBack:    ()      => child = Container(),
-          showBeers: (beers) {
-                if(beers.isEmpty){
-                  child = const Text('No selected beer!');
-                } 
-                
-            return child = BeersList(beers);
-          }
+          showBeers: (beers) => child = ( beers.isEmpty )?( defaultChild ):( BeersList(beers) ),
         );
 
         return child;
