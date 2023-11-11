@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:supercharge_beer_app/system/configs/app_constants.dart';
 
 class LimitReachedPage extends StatelessWidget {
   const LimitReachedPage({super.key});
@@ -7,7 +8,7 @@ class LimitReachedPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-          child: Text('You reached the daily limit of beer like process!:).\nPlease try it later!'),
+          child: Text(textLimit),
         ),
     );
   }

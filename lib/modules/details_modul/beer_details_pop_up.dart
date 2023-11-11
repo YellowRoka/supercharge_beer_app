@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:supercharge_beer_app/repositories/punk_repository/model/beer_model.dart';
+import 'package:supercharge_beer_app/system/configs/app_constants.dart';
 import 'package:supercharge_beer_app/system/configs/color_constants.dart';
 
 class BeerDetailsPopUp extends StatelessWidget {
@@ -12,14 +13,14 @@ class BeerDetailsPopUp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Widget> items = [
-      Text( 'id: ${beer.id}',                     style: textColor ),
-      Text( 'tagline: ${beer.tagline}',           style: textColor ),
-      Text( 'description: \n${beer.description}', style: textColor ),
+      Text( '$textId: ${beer.id}',                     style: textColor ),
+      Text( '$textTagLine: ${beer.tagline}',           style: textColor ),
+      Text( '$textDescription: \n${beer.description}', style: textColor ),
     ];
     
     return AlertDialog(
       icon:             const Icon(Icons.blender_rounded, color: beerColorWhite),
-      title:            Text( 'name: ${beer.name}', style: textColor ),
+      title:            Text( '$textName: ${beer.name}', style: textColor ),
       backgroundColor:  beerColorGreey,
       actionsAlignment: MainAxisAlignment.center,
       actions: [

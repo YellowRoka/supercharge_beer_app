@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:supercharge_beer_app/system/configs/app_constants.dart';
 
 class ErrorPage extends StatelessWidget {
   const ErrorPage({super.key});
@@ -7,7 +8,7 @@ class ErrorPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: Text('Something went wrong!:(\n Please try it later!')
+        child: Text(textError)
       ),
     );
   }

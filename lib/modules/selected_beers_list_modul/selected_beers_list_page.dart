@@ -11,7 +11,7 @@ class SelectedBeersListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocProvider(
-        create: (context) => SelectedBeersListCubit( selectedBeersRepositoryProvider ),
+        create: (context) => SelectedBeersListCubit( appRouterProvider, selectedBeersRepositoryProvider ),
         child: const ShowBeersList(),
       ),
     );

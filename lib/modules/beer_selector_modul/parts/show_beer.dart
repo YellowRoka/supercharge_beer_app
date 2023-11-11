@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:supercharge_beer_app/modules/beer_selector_modul/bloc/beer_selector_bloc.dart';
 import 'package:supercharge_beer_app/modules/details_modul/beer_details_pop_up.dart';
 import 'package:supercharge_beer_app/repositories/punk_repository/model/beer_model.dart';
+import 'package:supercharge_beer_app/system/configs/app_constants.dart';
 import 'package:supercharge_beer_app/system/configs/color_constants.dart';
 
 class ShowBeerWidget extends StatelessWidget {
@@ -46,14 +47,14 @@ class ShowBeerWidget extends StatelessWidget {
                   onPressed: () => context.read<BeerSelectorBloc>().add( BeerSelectorEvent.like(beer!) ), 
                   style:     ElevatedButton.styleFrom( backgroundColor: beerColorBlue ),
                   icon:      const Icon( Icons.favorite, color: beerColorRed ), 
-                  label:     const Text( 'Like' )
+                  label:     const Text( textLike )
                 ),
       
                 ElevatedButton.icon(
                   onPressed: () => context.read<BeerSelectorBloc>().add(const BeerSelectorEvent.unlike()), 
                   style:     ElevatedButton.styleFrom(backgroundColor: beerColorBlue),
                   icon:      const Icon( Icons.disabled_by_default_rounded, color: beerColorBlack ), 
-                  label:     const Text( 'Not Liked' )
+                  label:     const Text( textNotLiked )
                 ),
               ],
             ),

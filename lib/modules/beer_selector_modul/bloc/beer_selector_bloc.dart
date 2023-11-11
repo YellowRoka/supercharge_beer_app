@@ -1,27 +1,36 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:supercharge_beer_app/di/providers/providers.dart';
 import 'package:supercharge_beer_app/repositories/punk_repository/model/beer_model.dart';
+import 'package:supercharge_beer_app/repositories/punk_repository/punk_repository.dart';
+import 'package:supercharge_beer_app/repositories/selected_beers_repository/selected_beers_repository.dart';
+import 'package:supercharge_beer_app/system/configs/app_constants.dart';
 import 'package:supercharge_beer_app/system/router/app_router.dart';
+import 'package:supercharge_beer_app/system/router/app_router_interface.dart';
 
 part 'beer_selector_event.dart';
 part 'beer_selector_state.dart';
 part 'beer_selector_bloc.freezed.dart';
 
 class BeerSelectorBloc extends Bloc<BeerSelectorEvent, BeerSelectorState> {
-  final int beerSelectorLimit = 10;
-
-  int beerCounter = 1;
+  final PunkApiRepository       punkApiRepository;
+  final AppRouterInterface      appRouter;
+  final SelectedBeersRepository selectedBeersRepository;
   
   late StreamSubscription beerStreamSubsription;
 
-  BeerSelectorBloc() : super( const BeerSelectorState.init()) {
+  int _beerCounter = 1;
 
-    beerStreamSubsription = punkApiRepositoryProvider.getActualBeer.listen(
+  BeerSelectorBloc({
+    required this.punkApiRepository,
+    required this.appRouter,
+    required this.selectedBeersRepository,
+  }) : super( const BeerSelectorState.init() ) {
+
+    beerStreamSubsription = punkApiRepository.getActualBeer.listen(
       (beer) {
         add(BeerSelectorEvent.refreshed(beer));
-        if(beerCounter>beerSelectorLimit){
+        if( _beerCounter > beerSelectorLimit ){
           add( const BeerSelectorEvent.limited());
         }
       }
@@ -35,32 +44,33 @@ class BeerSelectorBloc extends Bloc<BeerSelectorEvent, BeerSelectorState> {
   }
 
   FutureOr<void> initHandler( BeerSelectorInitEvent event, Emitter<BeerSelectorState> emit ) async {
-    punkApiRepositoryProvider.getABeer(id: beerCounter);
+    punkApiRepository.getABeer(id: _beerCounter);
     emit( const BeerSelectorState.init());
   }
 
   FutureOr<void> likeHandler( BeerSelectorLikeEvent event, Emitter<BeerSelectorState> emit ) async {
-    beerCounter++;
-    punkApiRepositoryProvider.getABeer(id: beerCounter);
-    selectedBeersRepositoryProvider.addBeerToLikedOnes(event.beer);
+    _beerCounter++;
+    punkApiRepository.getABeer(id: _beerCounter);
+    selectedBeersRepository.addBeerToLikedOnes(event.beer);
     emit( const BeerSelectorState.liked());
   }
 
   FutureOr<void> unlikeHandler( BeerSelectorUnlikeEvent event, Emitter<BeerSelectorState> emit ) async {
-    beerCounter++;
-    punkApiRepositoryProvider.getABeer(id: beerCounter);
+    _beerCounter++;
+    punkApiRepository.getABeer(id: _beerCounter);
     emit( const BeerSelectorState.unliked());
   }
 
   FutureOr<void> refreshHandler( BeerSelectorRefreshedEvent event, Emitter<BeerSelectorState> emit ) async {
     if(event.beer == null){
-      appRouterProvider.goToRoute( AppRouter.pageErrorView );
+      appRouter.goToRoute( AppRouter.pageErrorView );
     }
     emit( BeerSelectorState.refreshed(beer: event.beer));
   }
+  
   FutureOr<void> limitedHandler( BeerSelectorLimitedEvent event, Emitter<BeerSelectorState> emit ) async {
-    appRouterProvider.goToRoute( AppRouter.pageLimitReachedView );
-    appRouterProvider.goToRoute( AppRouter.pageBeerListView );
+    appRouter.goToRoute( AppRouter.pageLimitReachedView );
+    appRouter.goToRoute( AppRouter.pageBeerListView );
     emit( const BeerSelectorState.limited() );
   }
 
