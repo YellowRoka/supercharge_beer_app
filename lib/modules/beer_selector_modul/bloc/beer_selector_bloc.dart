@@ -69,7 +69,7 @@ class BeerSelectorBloc extends Bloc<BeerSelectorEvent, BeerSelectorState> {
   }
   
   FutureOr<void> limitedHandler( BeerSelectorLimitedEvent event, Emitter<BeerSelectorState> emit ) async {
-    appRouter.goToRoute( AppRouter.pageLimitReachedView );
+    appRouter.goToRouteWithReplace( AppRouter.pageLimitReachedView );
     appRouter.goToRoute( AppRouter.pageBeerListView );
     emit( const BeerSelectorState.limited() );
   }

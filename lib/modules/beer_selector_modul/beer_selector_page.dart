@@ -15,7 +15,7 @@ class BeerSelectorPage extends StatelessWidget {
           appRouter:               appRouterProvider,
           punkApiRepository:       punkApiRepositoryProvider,
           selectedBeersRepository: selectedBeersRepositoryProvider, 
-        )..add( const BeerSelectorEvent.initial()),
+        )..add( const BeerSelectorEvent.initial() ),
         child:  const BeerSelectorView(),
       ),
     );

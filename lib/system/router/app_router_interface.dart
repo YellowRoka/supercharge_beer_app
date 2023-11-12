@@ -4,6 +4,7 @@ abstract class AppRouterInterface{
   GoRouter get routeMapper;
 
   void goToRoute(String routeName, {Object? extra});
+  void goToRouteWithReplace(String routeName, {Object? extra});
   void goBack();
   
   List<String> get routes;

@@ -14,7 +14,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return MaterialApp.router(
       routerConfig: appRouterProvider.routeMapper,
       title:        'Beer Selector App',
