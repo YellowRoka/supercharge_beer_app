@@ -21,10 +21,13 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
     );
     controller.addListener(
       () {
-        setState(() {});
-        if( controller.isCompleted ){
-          appRouterProvider.goToRouteWithReplace( AppRouter.pageBeerSelectorView );
-        }
+        setState(
+          () {
+            if( controller.isCompleted ){
+              appRouterProvider.goToRouteWithReplace( AppRouter.pageBeerSelectorView );
+            }
+          }
+        );
       }
     );
     controller.forward();
