@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:supercharge_beer_app/di/injection_configuration/injection.dart';
 import 'package:supercharge_beer_app/di/providers/providers.dart';
+import 'package:supercharge_beer_app/system/configs/theme_config.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      theme:        mainTheme,
       routerConfig: appRouterProvider.routeMapper,
       title:        'Beer Selector App',
     );

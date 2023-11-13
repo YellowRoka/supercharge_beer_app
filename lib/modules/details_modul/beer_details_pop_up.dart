@@ -5,7 +5,8 @@ import 'package:supercharge_beer_app/system/configs/app_constants.dart';
 import 'package:supercharge_beer_app/system/configs/color_constants.dart';
 
 class BeerDetailsPopUp extends StatelessWidget {
-  final TextStyle textColor = const TextStyle(color: beerColorBlack);
+  final TextStyle textStyleBig    = const TextStyle(color: beerColorBlack, fontWeight: FontWeight.bold);
+  final TextStyle textStyleMedium = const TextStyle(color: beerColorBlack);
   final BeerModel beer;
 
   const BeerDetailsPopUp(this.beer, {super.key});
@@ -13,30 +14,36 @@ class BeerDetailsPopUp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Widget> items = [
-      Text( '$textId: ${beer.id}',                     style: textColor ),
-      Text( '$textTagLine: ${beer.tagline}',           style: textColor ),
-      Text( '$textDescription: \n${beer.description}', style: textColor ),
+      Text( '$textTagLine: ', style: textStyleBig    ),
+      Text( beer.tagline,     style: textStyleMedium ),
+      const SizedBox( height: 10 ),
+      Text( '$textDescription:', style: textStyleBig    ),
+      Text( beer.description,    style: textStyleMedium ),
     ];
     
     return AlertDialog(
-      icon:             const Icon(Icons.blender_rounded, color: beerColorWhite),
-      title:            Text( '$textName: ${beer.name}', style: textColor ),
-      backgroundColor:  beerColorGreey,
+      actionsPadding:   const EdgeInsets.only(bottom: 20),
+      icon:             const Icon( Icons.blender_rounded, color: beerColorYellow, ),
+      title:            Text( '$textName: ${beer.name}', style: textStyleMedium, ),
+      backgroundColor:  beerColorGrey,
       actionsAlignment: MainAxisAlignment.center,
       actions: [
         IconButton(
           onPressed: () => context.pop(),
-          icon:       const Icon(Icons.done, color: beerColorGreen,size: 50,),
+          icon:       const Icon( Icons.done, color: beerColorGreen, size: 50, ),
         )
       ],
-      content: Container(
-        color:  beerColorGreey,
-        height: MediaQuery.of(context).size.height * 0.4,
-        width:  MediaQuery.of(context).size.width  * 0.9,
-        child:  ListView.separated(
-          itemBuilder:       (context, index) => items[index],
-           itemCount:        items.length,
-           separatorBuilder: (BuildContext context, int index) => const SizedBox(height: 20),
+      content: ClipRRect(
+        borderRadius: BorderRadius.circular(24),
+        child: Container(
+          padding: const EdgeInsets.all(10),
+          color:   beerColorWhite,
+          height:  MediaQuery.of(context).size.height * 0.4,
+          width:   MediaQuery.of(context).size.width  * 0.9,
+          child:   ListView.builder(
+            itemBuilder: (context, index) => items[index],
+             itemCount:  items.length,
+          ),
         ),
       ),
     );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:supercharge_beer_app/di/providers/providers.dart';
+import 'package:supercharge_beer_app/system/configs/color_constants.dart';
 import 'package:supercharge_beer_app/system/router/app_router.dart';
 
 class SplashPage extends StatefulWidget {
@@ -42,7 +43,7 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: animationColorBlack,
       body: Center(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -50,21 +51,22 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
             Stack(
               alignment: Alignment.bottomCenter,
               children:  [
+
                 Container( 
-                width:      150, 
-                height:     400, 
-                decoration: BoxDecoration(
-                  color:        Colors.grey.shade200, 
-                  borderRadius: BorderRadius.circular(24)
+                  width:      150, 
+                  height:     400, 
+                  decoration: BoxDecoration(
+                    color:        animationColorGrey, 
+                    borderRadius: BorderRadius.circular(24)
+                  ),
                 ),
-              ),
                 
                 Container( 
                   width:      130,
                   height:     380 * controller.value, 
                   margin:     const EdgeInsets.only(bottom: 10), 
                   decoration: BoxDecoration(
-                    color:      Colors.white,
+                    color:      animationColorWhite,
                     borderRadius: BorderRadius.circular(24)
                   ),
                 ),
@@ -74,7 +76,7 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
                   height:     300 * controller.value,
                   margin:     const EdgeInsets.only(bottom: 10),
                   decoration: BoxDecoration(
-                    color:        Colors.yellow.shade200,
+                    color:        animationColorYellow,
                     borderRadius: BorderRadius.circular(24)
                   ),
                 ),
@@ -86,7 +88,7 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
               width:      50, 
               height:     250,
               decoration: BoxDecoration(
-                color:       Colors.grey.shade200, 
+                color:       animationColorGrey, 
                 borderRadius:  const BorderRadius.only( 
                   topRight:    Radius.circular(24),
                   bottomRight: Radius.circular(24)
@@ -94,7 +96,7 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
               ),
               child:     Container(
                 decoration: BoxDecoration(
-                  color:      Colors.black,
+                  color:      animationColorBlack,
                   borderRadius: BorderRadius.circular(24)
                 ),
               ),

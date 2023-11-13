@@ -22,21 +22,52 @@ class ShowBeerWidget extends StatelessWidget {
       ),
       child: Container(
         padding: const EdgeInsets.fromLTRB(10, 80, 10, 30),
-        color: beerColorGreey,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment:  MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(beer!.tagline),
-            
-            SizedBox(
-              height: MediaQuery.of(context).size.height*0.5,
-              child:  Image.network(beer!.imageUrl),
+            Text(
+              beer!.tagline,
+              style:        const TextStyle(
+                fontSize:   24,
+                fontWeight: FontWeight.bold,
+                color:      beerColorBlack,
               ),
+           ),
             
             SizedBox(
-              height: MediaQuery.of(context).size.height*0.15,
-              child:  Text(beer!.description, overflow: TextOverflow.clip, maxLines: 5,textAlign:TextAlign.center ),
+              height: MediaQuery.of(context).size.height * 0.5,
+              child:  Image.network(beer!.imageUrl),
+            ),
+            
+            Material(
+              borderRadius: BorderRadius.circular(24),
+              shadowColor:  Colors.transparent,
+              elevation:    10,
+              child:        Container(
+                padding: const EdgeInsets.all(20),
+                height:  MediaQuery.of(context).size.height * 0.15,
+                decoration:   BoxDecoration(
+                  borderRadius: BorderRadius.circular(24),
+                  boxShadow:    const [
+                    BoxShadow(
+                      color:        beerColorYellow,
+                      blurRadius:   10,
+                      spreadRadius: 0.1,
+                      blurStyle: BlurStyle.solid
+                    )
+                  ]
+                ),
+                child: SingleChildScrollView(
+
+                  child: Text(
+                    beer!.description,
+                    overflow:  TextOverflow.clip,
+                    maxLines:  10,
+                    textAlign: TextAlign.justify,
+                  )
+                ),
+              ),
             ),
       
             Row(
@@ -45,16 +76,14 @@ class ShowBeerWidget extends StatelessWidget {
               children: [
                 ElevatedButton.icon(
                   onPressed: () => context.read<BeerSelectorBloc>().add( BeerSelectorEvent.like(beer!) ), 
-                  style:     ElevatedButton.styleFrom( backgroundColor: beerColorBlue ),
                   icon:      const Icon( Icons.favorite, color: beerColorRed ), 
-                  label:     const Text( textLike )
+                  label:     const Text( textLike, style: TextStyle(color: beerColorBlack) ),
                 ),
       
                 ElevatedButton.icon(
                   onPressed: () => context.read<BeerSelectorBloc>().add(const BeerSelectorEvent.unlike()), 
-                  style:     ElevatedButton.styleFrom(backgroundColor: beerColorBlue),
                   icon:      const Icon( Icons.disabled_by_default_rounded, color: beerColorBlack ), 
-                  label:     const Text( textNotLiked )
+                  label:     const Text( textNotLiked, style: TextStyle(color: beerColorBlack) )
                 ),
               ],
             ),

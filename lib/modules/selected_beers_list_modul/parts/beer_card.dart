@@ -19,8 +19,8 @@ class BeerCard extends StatelessWidget {
         height: MediaQuery.of(context).size.height * 0.4,
         width:  MediaQuery.of(context).size.width  * 0.5,
         child:  Card(
-          color:  beerColorGreey,
-          child:  Container(
+          elevation: 8,
+          child:     Container(
             padding: const EdgeInsets.all(10),
             width:   MediaQuery.of(context).size.width  * 0.5,
             child:   Row(
@@ -29,7 +29,7 @@ class BeerCard extends StatelessWidget {
               children: [
                 
                 SizedBox(
-                  width:  MediaQuery.of(context).size.width  * 0.4,
+                  width: MediaQuery.of(context).size.width  * 0.4,
                   child: Image.network(beer!.imageUrl)
                 ),
                   
@@ -41,14 +41,22 @@ class BeerCard extends StatelessWidget {
                   children: [
     
                     SizedBox( 
-                      width:  MediaQuery.of(context).size.width * 0.4,
-                      child:  Text(beer!.name, maxLines: 5, overflow: TextOverflow.ellipsis
+                      width: MediaQuery.of(context).size.width * 0.4,
+                      child: Text(
+                        beer!.name,
+                        maxLines: 5,
+                        overflow: TextOverflow.ellipsis,
+                        style:    const TextStyle(color: beerColorBlack),
                       ),
                     ),
     
                     SizedBox( 
-                      width:  MediaQuery.of(context).size.width * 0.4,
-                      child:  Text(beer!.tagline, maxLines: 5, overflow: TextOverflow.ellipsis
+                      width: MediaQuery.of(context).size.width * 0.4,
+                      child: Text(
+                        beer!.tagline,
+                        maxLines: 5,
+                        overflow: TextOverflow.ellipsis,
+                        style:    const TextStyle(color: beerColorBlack),
                       ),
                     ),
                     

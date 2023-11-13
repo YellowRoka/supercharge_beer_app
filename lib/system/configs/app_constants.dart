@@ -6,7 +6,7 @@
   const String textLimit    = 'You reached the daily limit of beer like process!:).\nPlease try it later!';
 
   const String textId          = 'id';
-  const String textTagLine     = 'tagline';
-  const String textDescription = 'description';
+  const String textTagLine     = 'Tagline';
+  const String textDescription = 'Description';
   const String textName        = 'Name';
   
