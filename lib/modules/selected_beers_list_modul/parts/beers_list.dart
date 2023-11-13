@@ -2,6 +2,8 @@ import 'package:flutter/widgets.dart';
 import 'package:supercharge_beer_app/modules/selected_beers_list_modul/parts/beer_card.dart';
 
 import 'package:supercharge_beer_app/repositories/punk_repository/model/beer_model.dart';
+import 'package:supercharge_beer_app/system/configs/app_constants.dart';
+import 'package:supercharge_beer_app/system/configs/color_constants.dart';
 
 class BeersList extends StatelessWidget {
   final List<BeerModel> likedBeersList;
@@ -19,7 +21,9 @@ class BeersList extends StatelessWidget {
           ]
         ]
         else...[
-          const BeerCard(null)
+          const Center(
+            child: Text(textEmpty, style: TextStyle(color: beerColorBlack) ),
+          )
         ]
       ],
     );
